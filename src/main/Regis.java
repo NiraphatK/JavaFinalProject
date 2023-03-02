@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.IOException;
+import java.util.Scanner;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -18,6 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Regis extends JFrame {
 
@@ -97,46 +101,50 @@ public class Regis extends JFrame {
 
 		// --------------------------------------Label
 		// Text--------------------------------------//
-		
-		RoundPanel Deccorate = new RoundPanel(100, new Color(67, 79, 142));
-		Deccorate.setBounds(10, 284, 250, 280);
-		Board.add(Deccorate);
-		Deccorate.setLayout(null);
-		Deccorate.setOpaque(false);
 
 		txtDDcar = new JLabel("DD Rental Car");
-		txtDDcar.setBounds(66, 240, 143, 33);
+		txtDDcar.setBounds(63, 230, 143, 33);
 		Board.add(txtDDcar);
 		txtDDcar.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDDcar.setForeground(new Color(251, 234, 235));
 		txtDDcar.setFont(new Font("Impact", Font.PLAIN, 26));
-		
-		JLabel txt_location = new JLabel("<html>1771/1 Pattanakarn Road,<br />Suan Luang,Suan Luang ,<br />Bangkok 10250<br />");
-		txt_location.setFont(new Font("Impact", Font.PLAIN, 15));
-		txt_location.setForeground(new Color(251, 234, 235));
-		txt_location.setBounds(62, 192, 155, 60);
-		Deccorate.add(txt_location);
-		
+
+		RoundPanel Deccorate = new RoundPanel(100, new Color(67, 79, 142));
+		Deccorate.setBounds(10, 245, 250, 280);
+		Board.add(Deccorate);
+		Deccorate.setLayout(null);
+		Deccorate.setOpaque(false);
+
 		JLabel txt_numberINFO = new JLabel("Contact Information");
 		txt_numberINFO.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_numberINFO.setForeground(new Color(251, 234, 235));
 		txt_numberINFO.setFont(new Font("UD Digi Kyokasho NP-R", Font.PLAIN, 14));
-		txt_numberINFO.setBounds(51, 43, 139, 17);
+		txt_numberINFO.setBounds(54, 47, 139, 17);
 		Deccorate.add(txt_numberINFO);
 
 		JLabel txt_number = new JLabel("Tel.012-345-6789");
-		txt_number.setBounds(62, 100, 106, 18);
+		txt_number.setBounds(81, 101, 106, 18);
 		Deccorate.add(txt_number);
 		txt_number.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_number.setForeground(new Color(251, 234, 235));
 		txt_number.setFont(new Font("Impact", Font.PLAIN, 14));
 
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(52, 101, 24, 24);
+		Deccorate.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(Regis.class.getResource("/icon/phone_24px.png")));
+
 		JLabel txt_numberWWW = new JLabel("www.dd-rentalcar.com");
 		txt_numberWWW.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_numberWWW.setForeground(new Color(251, 234, 235));
 		txt_numberWWW.setFont(new Font("Impact", Font.PLAIN, 15));
-		txt_numberWWW.setBounds(66, 147, 144, 20);
+		txt_numberWWW.setBounds(85, 148, 144, 20);
 		Deccorate.add(txt_numberWWW);
+
+		JLabel lblwebsite = new JLabel("");
+		lblwebsite.setIcon(new ImageIcon(Regis.class.getResource("/icon/website_21px.png")));
+		lblwebsite.setBounds(54, 146, 24, 24);
+		Deccorate.add(lblwebsite);
 
 		JPanel inBoard = new JPanel(); // Panel
 		inBoard.setBounds(213, 3, 62, 578);
@@ -146,21 +154,6 @@ public class Regis extends JFrame {
 
 		// --------------------------------------Label
 		// Icon--------------------------------------//
-		
-		JLabel icon_call = new JLabel("");
-		icon_call.setBounds(33, 100, 24, 24);
-		Deccorate.add(icon_call);
-		icon_call.setIcon(new ImageIcon(Regis.class.getResource("/icon/phone_24px.png")));
-		
-		JLabel icon_www = new JLabel("");
-		icon_www.setIcon(new ImageIcon(Regis.class.getResource("/icon/website_21px.png")));
-		icon_www.setBounds(35, 145, 24, 24);
-		Deccorate.add(icon_www);
-		
-		JLabel icon_location = new JLabel("");
-		icon_location.setIcon(new ImageIcon(Main.class.getResource("/icon/location_22px.png")));
-		icon_location.setBounds(35, 192, 22, 22);
-		Deccorate.add(icon_location);
 
 		JLabel icon_exit = new JLabel("");
 		icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close_16px.png")));
@@ -319,27 +312,18 @@ public class Regis extends JFrame {
 				icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close_16px.png")));
 			}
 		});
-		
-		JLabel icon_LName = new JLabel("");
-		icon_LName.setIcon(new ImageIcon(Regis.class.getResource("/icon/user_16px.png")));
-		icon_LName.setBounds(944, 407, 16, 16);
-		RegisFrame.add(icon_LName);
-
-		JLabel icon_email = new JLabel("");
-		icon_email.setIcon(new ImageIcon(Regis.class.getResource("/icon/Open email_16px.png")));
-		icon_email.setBounds(592, 105, 16, 16);
-		RegisFrame.add(icon_email);
 
 		// --------------------------------------INPUT-------------------------------------//
 
-		JLabel txt_email_placeholder = new JLabel("กรอกอีเมล");
-		txt_email_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-		txt_email_placeholder.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				txt_email_placeholder.setVisible(false);
-			}
-		});
+		/*
+		 * JLabel txt_email_placeholder = new JLabel("กรอกอีเมล");
+		 * txt_email_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR
+		 * )); txt_email_placeholder.addKeyListener(new KeyAdapter() {
+		 * 
+		 * @Override public void keyTyped(KeyEvent e) {
+		 * txt_email_placeholder.setVisible(false); if(txt_email_placeholder.equals(""))
+		 * txt_email_placeholder.setVisible(true);; } });
+		 */
 
 		JLabel txt_driverLicense_placeholder = new JLabel("กรอกเลขใบขับขี่");
 		txt_driverLicense_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
@@ -368,10 +352,6 @@ public class Regis extends JFrame {
 		txt_pass_placeholder.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txt_pass_placeholder.setBounds(320, 199, 90, 20);
 		RegisFrame.add(txt_pass_placeholder);
-		txt_email_placeholder.setForeground(Color.GRAY);
-		txt_email_placeholder.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txt_email_placeholder.setBounds(320, 102, 70, 20);
-		RegisFrame.add(txt_email_placeholder);
 
 		JLabel txt_email = new JLabel("Email :");
 		txt_email.setBounds(320, 56, 54, 24);
@@ -380,18 +360,35 @@ public class Regis extends JFrame {
 		txt_email.setForeground(Color.BLACK);
 		txt_email.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
-		input_txtemail = new JTextField();
+		input_txtemail = new JTextField("กรอกอีเมล");
+		input_txtemail.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				input_txtemail.setForeground(Color.BLACK);
+			}
+		});
+		input_txtemail.setForeground(Color.GRAY);
+		input_txtemail.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (input_txtemail.getText().equals("กรอกอีเมล")) {
+					input_txtemail.setText("");
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (input_txtemail.getText().equals("")) {
+					input_txtemail.setText("กรอกอีเมล");
+					input_txtemail.setForeground(Color.GRAY);
+				}
+			}
+		});
 		input_txtemail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		input_txtemail.setBorder(null);
 		input_txtemail.setBackground(new java.awt.Color(0, 0, 0, 1));
 		input_txtemail.setColumns(10);
 		input_txtemail.setBounds(320, 100, 259, 19);
-		input_txtemail.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				txt_email_placeholder.setVisible(false);
-			}
-		});
 		RegisFrame.add(input_txtemail);
 
 		JLabel txt_email_underline = new JLabel("____________________________________________");
@@ -562,46 +559,48 @@ public class Regis extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Main nextMain = new Main();
-				String text = acc.chkData(input_fName.getText(), input_LName.getText(), input_txtemail.getText(),
-						input_txtpass_hide.getText(), input_txtpassconfirm_hide.getText(), input_TextIdCard.getText(),
-						input_TextDriverID.getText());
-				if (text.equals("email"))
-					lblCautionEmail.setVisible(true);
-				else
-					lblCautionEmail.setVisible(false);
-				if (text.equals("shortPassword"))
-					lblCautionPassword.setVisible(true);
-				else
-					lblCautionPassword.setVisible(false);
-				if (text.equals("password"))
-					lblCautionPassnotmatch.setVisible(true);
-				else
-					lblCautionPassnotmatch.setVisible(false);
-				if (text.equals("ID"))
-					lblCautionID.setVisible(true);
-				else
-					lblCautionID.setVisible(false);
-				if (text.equals("DL"))
-					lblCautionDL.setVisible(true);
-				else
-					lblCautionDL.setVisible(false);
-				if (text.equals("blank"))
-					JOptionPane.showMessageDialog(null, "The field cannot be left blank.", "Error to registation",
-							JOptionPane.ERROR_MESSAGE);
-				if (text.equals("file"))
-					JOptionPane.showMessageDialog(null, "The account already exists !!", "Error to registation",
-							JOptionPane.ERROR_MESSAGE);
-				if (text.equals("correct")) {
-					acc.setEmail(input_txtemail.getText());
-					acc.setPassword(input_txtpass_hide.getText());
-					acc.setId(input_TextIdCard.getText());
-					acc.setDriverLicense(input_TextDriverID.getText());
-					acc.setFName(input_fName.getText());
-					acc.setLName(input_LName.getText());
-					acc.register();
-					JOptionPane.showMessageDialog(null, "Account created successfully!!", "Registation",JOptionPane.INFORMATION_MESSAGE);
-					setVisible(false);
-					nextMain.setVisible(true);
+				String text;
+				try {
+					text = acc.chkData(input_fName.getText(), input_LName.getText(), input_txtemail.getText(),
+							input_txtpass_hide.getText(), input_txtpassconfirm_hide.getText(),
+							input_TextIdCard.getText(), input_TextDriverID.getText());
+
+					if (text.equals("email"))
+						lblCautionEmail.setVisible(true);
+					else
+						lblCautionEmail.setVisible(false);
+					if (text.equals("shortPassword"))
+						lblCautionPassword.setVisible(true);
+					else
+						lblCautionPassword.setVisible(false);
+					if (text.equals("password"))
+						lblCautionPassnotmatch.setVisible(true);
+					else
+						lblCautionPassnotmatch.setVisible(false);
+					if (text.equals("ID"))
+						lblCautionID.setVisible(true);
+					else
+						lblCautionID.setVisible(false);
+					if (text.equals("DL"))
+						lblCautionDL.setVisible(true);
+					else
+						lblCautionDL.setVisible(false);
+					if (text.equals("blank"))
+						JOptionPane.showMessageDialog(null, "The field cannot be left blank.", "Error to registation",
+								JOptionPane.ERROR_MESSAGE);
+					if (text.equals("file"))
+						JOptionPane.showMessageDialog(null, "The account already exists !!", "Error to registation",
+								JOptionPane.ERROR_MESSAGE);
+					if (text.equals("correct")) {
+						acc.register();
+						JOptionPane.showMessageDialog(null, "Account created successfully!!", "Registation",
+								JOptionPane.INFORMATION_MESSAGE);
+						setVisible(false);
+						nextMain.setVisible(true);
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 
 			}
@@ -675,7 +674,15 @@ public class Regis extends JFrame {
 		txt_LName_underline.setBounds(672, 409, 264, 14);
 		RegisFrame.add(txt_LName_underline);
 
-		
+		JLabel icon_LName = new JLabel("");
+		icon_LName.setIcon(new ImageIcon(Regis.class.getResource("/icon/user_16px.png")));
+		icon_LName.setBounds(944, 407, 16, 16);
+		RegisFrame.add(icon_LName);
+
+		JLabel icon_email = new JLabel("");
+		icon_email.setIcon(new ImageIcon(Regis.class.getResource("/icon/Open email_16px.png")));
+		icon_email.setBounds(592, 105, 16, 16);
+		RegisFrame.add(icon_email);
 
 		// --------------------------------------Label
 		// BG-------------------------------------//

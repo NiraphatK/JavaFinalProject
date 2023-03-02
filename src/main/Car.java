@@ -8,6 +8,8 @@ public class Car {
 	private int price;
 
 	
+	
+	
 	// method
 	public void setType(String TYPE) {
 		type = TYPE;
