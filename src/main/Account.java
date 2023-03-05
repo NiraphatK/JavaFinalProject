@@ -34,7 +34,7 @@ public class Account {
 		String s;
 		while ((s = br.readLine()) != null) {
 			String[] data = s.split(",");
-			if (this.email.equals(data[4])) {
+			if (email.equalsIgnoreCase(data[4])) {
 				fname = data[0];
 				lname = data[1];
 				id = data[2];
@@ -55,7 +55,7 @@ public class Account {
 	}
 
 	public String getName() {
-		return fname.toLowerCase().charAt(0) + fname.substring(1) + " " + lname.toLowerCase().charAt(0)
+		return fname.toUpperCase().charAt(0) + fname.substring(1) + " " + lname.toUpperCase().charAt(0)
 				+ lname.substring(1);
 	}
 
@@ -138,7 +138,7 @@ public class Account {
 
 			BufferedReader br = new BufferedReader(
 					(new FileReader("register.txt")));
-			String read;
+			String read = null;
 			while ((read = br.readLine()) != null) {
 				String[] data = read.split(",");
 				if (data[2].equals(ID) || data[3].equals(DL) || data[4].equals(EMAIL)) {

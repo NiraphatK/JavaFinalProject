@@ -10,6 +10,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.JLabel;
@@ -28,6 +31,8 @@ import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -55,19 +60,16 @@ import javax.swing.JRadioButton;
 
 public class Homepage extends JFrame {
 
-	private String[] announce = {
-			"สำหรับลูกค้าใหม่หรือยังไม่เคยใช้บริการของ DD Rental Car เมื่อได้ทำการเช่ารถ ตอนชำระเงินจะได้รับส่วนลด 10% ไปเลย !!!",
-			"สามารถติดตามข่าวสารของพวกเราได้ที่ www.dd-rentalcar.com อย่าพลาดข่าวสารดีๆจากพวกเรา",
-			"บริการเช่ารถของเรามีให้เลือกเช่ามากมายไม่ว่าจะเป็นรุ่น Toyota Honda Susuki Nissan BNW Mercedes-Benz และรุ่นอื่นๆอีกมากมาย", };
-	private String[] typeCar = { "Toyota Corolla Altis", "Honda Civic", "Mercedes Benz C200", "Nissan GT-R35",
-			"BMW 5 series Sedan", "Tesla Model 3", };
+	private  String[] announce;
+	private  String[] typeCar;
 	private int[] priceCar = { 1000, 1500, 3500, 5000, 2000, 3000 };
 	private JPanel contentPane;
 	private String email;
 	private int DAYS;
+	Date CurrentDate = new Date();
 	SimpleDateFormat datefor;
 	Timer timer;
-	int second, i, xx, xy, indexCP;
+	int second, i, xx, xy, indexCP, chkT;
 	JLabel dateLabel;
 	Boolean chkCarSelect = false;
 	int chkCar = 0;
@@ -77,10 +79,17 @@ public class Homepage extends JFrame {
 
 	public Homepage(String email) {
 		this.email = email;
+		announce = new String[]{"สำหรับลูกค้าใหม่หรือยังไม่เคยใช้บริการของ DD Rental Car เมื่อได้ทำการเช่ารถ ตอนชำระเงินจะได้รับส่วนลด 10% ไปเลย !!!",
+				"สามารถติดตามข่าวสารของพวกเราได้ที่ www.dd-rentalcar.com อย่าพลาดข่าวสารดีๆจากพวกเรา",
+				"บริการเช่ารถของเรามีให้เลือกเช่ามากมายไม่ว่าจะเป็นรุ่น Toyota Honda Susuki Nissan BNW Mercedes-Benz และรุ่นอื่นๆอีกมากมาย",
+				"รถที่มีรูปดาว เป็นรถที่มีความเป็นที่นิยมของตลาดมากหากท่านไม่รู้จะเลือกเช่ารถคันไหนทางบริษัทเราขอแนะนำคันที่มีดาวเพื่อช่วยในการตัดสินใจ" };
+		typeCar = new String[]{ "Toyota Corolla Altis", "Honda Civic", "Mercedes Benz C200", "Nissan GT-R35",
+				"BMW 5 series Sedan", "Tesla Model 3", };
 		DecimalFormat fm = new DecimalFormat("#,###");
 
 		getContentPane().setBackground(new Color(249, 251, 252));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/logo.png")));
 		setUndecorated(true);
 		setBounds(10, 11, 1350, 850);
 		setLocationRelativeTo(null);
@@ -110,19 +119,19 @@ public class Homepage extends JFrame {
 
 		JPanel funtionPanel = new JPanel();
 		funtionPanel.setBackground(new Color(99, 156, 217));
-		funtionPanel.setBounds(0, 0, 214, 870);
+		funtionPanel.setBounds(0, 0, 231, 870);
 		getContentPane().add(funtionPanel);
 		funtionPanel.setLayout(null);
 
 		RoundPanel Deccorate = new RoundPanel(100, new Color(119, 173, 231));
 		Deccorate.setLayout(null);
 		Deccorate.setOpaque(false);
-		Deccorate.setBounds(3, 302, 207, 486);
+		Deccorate.setBounds(3, 302, 224, 486);
 		funtionPanel.add(Deccorate);
 
 		JLabel totalMoney = new JLabel("");
 		totalMoney.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		totalMoney.setBounds(33, 396, 151, 36);
+		totalMoney.setBounds(29, 395, 179, 36);
 		Deccorate.add(totalMoney);
 		panel.setLayout(null);
 
@@ -156,19 +165,21 @@ public class Homepage extends JFrame {
 		lblNewLabel.setFont(new Font("UD Digi Kyokasho NK-B", Font.PLAIN, 18));
 
 		JLabel car1Text_1 = new JLabel("วันรับรถ :            วันส่งรถ :");
-		car1Text_1.setBounds(8, 49, 200, 32);
+		car1Text_1.setBounds(13, 49, 200, 32);
 		Deccorate.add(car1Text_1);
 		car1Text_1.setForeground(Color.BLACK);
 		car1Text_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		JDateChooser datePick = new JDateChooser();
-		datePick.setBounds(4, 82, 94, 20);
+		datePick.setMinSelectableDate(CurrentDate);
+		datePick.setBounds(3, 82, 107, 20);
 		datePick.setDateFormatString("d/MMM/yyyy");
 		Deccorate.add(datePick);
 		datePick.setOpaque(false);
 
 		JDateChooser dateReturn = new JDateChooser();
-		dateReturn.setBounds(108, 81, 94, 20);
+		dateReturn.setMinSelectableDate(CurrentDate);
+		dateReturn.setBounds(111, 82, 108, 20);
 		dateReturn.setDateFormatString("d/MMM/yyyy");
 		Deccorate.add(dateReturn);
 		dateReturn.setOpaque(false);
@@ -176,45 +187,45 @@ public class Homepage extends JFrame {
 		JLabel car1Text2 = new JLabel("สถานที่รับรถ / ส่งรถ :");
 		car1Text2.setForeground(Color.BLACK);
 		car1Text2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		car1Text2.setBounds(8, 113, 200, 32);
+		car1Text2.setBounds(13, 113, 200, 32);
 		Deccorate.add(car1Text2);
 
 		JTextField PlacePR = new JTextField();
 		PlacePR.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		PlacePR.setBounds(4, 146, 198, 32);
+		PlacePR.setBounds(13, 146, 198, 32);
 		Deccorate.add(PlacePR);
 		PlacePR.setColumns(10);
 
 		JLabel car1Text3 = new JLabel("ตัวเลือกเพิ่มเติม Add On :");
 		car1Text3.setForeground(Color.BLACK);
 		car1Text3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		car1Text3.setBounds(8, 189, 200, 32);
+		car1Text3.setBounds(13, 189, 200, 32);
 		Deccorate.add(car1Text3);
 
 		JCheckBox babyseat = new JCheckBox("Baby seat              ( 1,999.- )");
-		babyseat.setBounds(8, 228, 165, 23);
+		babyseat.setBounds(13, 228, 165, 23);
 		Deccorate.add(babyseat);
 
 		JCheckBox carInsur = new JCheckBox("Car insurance       ( 3,999.- )");
-		carInsur.setBounds(8, 261, 176, 23);
+		carInsur.setBounds(13, 261, 176, 23);
 		Deccorate.add(carInsur);
 
 		JCheckBox GPSselect = new JCheckBox("GPS                        ( 599.- )");
-		GPSselect.setBounds(8, 295, 165, 23);
+		GPSselect.setBounds(13, 295, 165, 23);
 		Deccorate.add(GPSselect);
 
 		JLabel car1Text3_1 = new JLabel("ประเภทรถ :");
 		car1Text3_1.setForeground(Color.BLACK);
 		car1Text3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		car1Text3_1.setBounds(8, 325, 200, 32);
+		car1Text3_1.setBounds(13, 325, 200, 32);
 		Deccorate.add(car1Text3_1);
 
 		showCar = new JLabel("");
-		showCar.setBounds(8, 362, 189, 21);
+		showCar.setBounds(13, 362, 189, 21);
 		Deccorate.add(showCar);
 
 		JLabel bottonDetail = new JLabel("");
-		bottonDetail.setBounds(35, 431, 136, 50);
+		bottonDetail.setBounds(44, 430, 136, 50);
 		Deccorate.add(bottonDetail);
 		bottonDetail.addMouseListener(new MouseAdapter() {
 			@Override
@@ -233,10 +244,8 @@ public class Homepage extends JFrame {
 					JOptionPane.showMessageDialog(null,
 							"Please, select at least 1 vehicle \nand you must to click confirm button.", "Select Car",
 							JOptionPane.INFORMATION_MESSAGE);
-				if(PlacePR.getText().equals(""))
-					JOptionPane.showMessageDialog(null,
-							"Please, write your pick up and return car locations.");
-				
+				if (PlacePR.getText().equals(""))
+					JOptionPane.showMessageDialog(null, "Please, write your pick up and return car locations.");
 				SimpleDateFormat frm = new SimpleDateFormat("yyyy-MM-dd");
 				Date DatePick = null;
 				Date DateReturn = null;
@@ -246,14 +255,25 @@ public class Homepage extends JFrame {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+				LocalDate currentDate = LocalDate.now();
+
 				if (DatePick == null || DateReturn == null)
 					JOptionPane.showMessageDialog(null, "The selected date cannot be blank.");
 				double DateDiff = DateReturn.getTime() - DatePick.getTime();
 				DAYS = (int) DateDiff / (60 * 60 * 1000) / 24;
+
+				LocalDate dateCPick = LocalDate.of(Integer.parseInt(frm.format(DatePick).substring(0, 4)),
+						Integer.parseInt(frm.format(DatePick).substring(5, 7)),
+						Integer.parseInt(frm.format(DatePick).substring(8, 10)));
+
 				if (DAYS <= 0)
 					JOptionPane.showMessageDialog(null, "Please enter the correct date.");
 				int total = DAYS * priceCar[indexCP];
-				if (!showCar.getText().equals("")&&DAYS>0) {
+				if (currentDate.isAfter(dateCPick)) {
+					JOptionPane.showMessageDialog(null, "Can not choose pick up day after current day.");
+				}
+				if (!showCar.getText().equals("") && DAYS > 0 && !PlacePR.getText().equals("")&&!currentDate.isAfter(dateCPick)) {
+					int baby = 0, insur = 0, gps = 0;
 					if (babyseat.isSelected())
 						total += 1999;
 					if (carInsur.isSelected())
@@ -261,38 +281,59 @@ public class Homepage extends JFrame {
 					if (GPSselect.isSelected())
 						total += 599;
 					totalMoney.setText("" + DAYS + " วัน ราคาสุทธิ " + fm.format(total) + ".00.-");
+
+					chkT = JOptionPane.showConfirmDialog(null,
+							"Please press \"YES\" for confirm or \"NO\" to go back page.", "Confirm Payment",
+							JOptionPane.YES_NO_OPTION);
+					if (chkT == 0) {
+						if (babyseat.isSelected())
+							baby = 1999;
+						if (carInsur.isSelected())
+							insur = 3999;
+						if (GPSselect.isSelected())
+							gps = 599;
+						try {
+							Bill bill = new Bill(email, new Car(typeCar[indexCP], priceCar[indexCP]), PlacePR.getText(),
+									DAYS, insur, baby, gps);
+							Billpayment billpay = new Billpayment(bill);
+							bill.saveBill();
+							billpay.setVisible(true);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					}
 				}
 			}
 		});
 		bottonDetail.setIcon(new ImageIcon(Homepage.class.getResource("/button/purchase2.png")));
-		
-				JLabel logoutLabel = new JLabel("Log out :");
+
+		JLabel logoutLabel = new JLabel("Log out :");
+		logoutLabel.setForeground(new Color(0, 0, 0));
+		logoutLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				logoutLabel.setForeground(new Color(255, 128, 128));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
 				logoutLabel.setForeground(new Color(0, 0, 0));
-				logoutLabel.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						logoutLabel.setForeground(new Color(255, 128, 128));
-					}
+			}
 
-					@Override
-					public void mouseExited(MouseEvent e) {
-						logoutLabel.setForeground(new Color(0, 0, 0));
-					}
-
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						int ans = JOptionPane.showConfirmDialog(null, "Are you sure you want to Logout?", "Logout",
-								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-						if (ans == 0) {
-							Main nextMain = new Main();
-							dispose();
-							nextMain.setVisible(true);
-						}
-					}
-				});
-				logoutLabel.setIcon(new ImageIcon(Homepage.class.getResource("/icon/logout.png")));
-				logoutLabel.setBounds(10, 816, 190, 24);
-				funtionPanel.add(logoutLabel);
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int ans = JOptionPane.showConfirmDialog(null, "Are you sure you want to Logout?", "Logout",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (ans == 0) {
+					Main nextMain = new Main();
+					dispose();
+					nextMain.setVisible(true);
+				}
+			}
+		});
+		logoutLabel.setIcon(new ImageIcon(Homepage.class.getResource("/icon/logout.png")));
+		logoutLabel.setBounds(10, 816, 190, 24);
+		funtionPanel.add(logoutLabel);
 
 		JLabel icon_exit = new JLabel("");
 		icon_exit.setIcon(new ImageIcon(Main.class.getResource("/icon/close_16px.png")));
@@ -362,11 +403,11 @@ public class Homepage extends JFrame {
 
 		JLabel megaphoneLabel = new JLabel("");
 		megaphoneLabel.setIcon(new ImageIcon(Homepage.class.getResource("/icon/Megaph.png")));
-		megaphoneLabel.setBounds(51, 23, 30, 30);
+		megaphoneLabel.setBounds(67, 23, 30, 30);
 		CarPanel.add(megaphoneLabel);
 
 		RoundPanel Board = new RoundPanel(20, new Color(220, 224, 229));
-		Board.setBounds(91, 23, 1008, 30);
+		Board.setBounds(107, 23, 1008, 30);
 		CarPanel.add(Board);
 		Board.setLayout(null);
 		Board.setOpaque(false);
@@ -381,7 +422,7 @@ public class Homepage extends JFrame {
 				"บริการเช่ารถของเรามีให้เลือกเช่ามากมายไม่ว่าจะเป็นรุ่น Toyota Honda Susuki Nissan BNW Mercedes-Benz และรุ่นอื่นๆอีกมากมาย");
 		TextLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		TextLabel.setForeground(new Color(255, 92, 11));
-		TextLabel.setBounds(117, 7, 969, 14);
+		TextLabel.setBounds(117, 0, 969, 30);
 		Board.add(TextLabel);
 
 		second = 0;
@@ -389,7 +430,7 @@ public class Homepage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				second++;
-				if (second % 7 == 0) {
+				if (second % 8 == 0) {
 					if (i > announce.length - 1) {
 						i = 0;
 						TextLabel.setText(announce[i]);
@@ -613,7 +654,7 @@ public class Homepage extends JFrame {
 		car1Panel_5.add(ConfirmBottonc6);
 
 		JLabel corner_panel = new JLabel("");
-		corner_panel.setBounds(-7, -18, 100, 100);
+		corner_panel.setBounds(9, -19, 100, 100);
 		CarPanel.add(corner_panel);
 		corner_panel.setIcon(new ImageIcon(Homepage.class.getResource("/icon/corners.png")));
 
@@ -625,7 +666,7 @@ public class Homepage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (radio1.isSelected()) {
 					indexCP = 0;
-					showCar.setText(typeCar[0] + " | Price : " + fm.format(priceCar[0]) + ".-");
+					showCar.setText(typeCar[indexCP] + " | Price : " + fm.format(priceCar[indexCP]) + ".-");
 				}
 			}
 		});

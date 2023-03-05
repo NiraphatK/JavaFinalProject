@@ -317,7 +317,7 @@ public class Main extends JFrame {
 				txt_email_underline.setFont(new Font("Tahoma", Font.PLAIN, 11));
 
 				input_txtemail = new JTextField();
-				input_txtemail.setBounds(482, 136, 259, 14);
+				input_txtemail.setBounds(481, 131, 259, 20);
 				MainFrame.add(input_txtemail);
 				input_txtemail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				input_txtemail.setBorder(null);
@@ -351,7 +351,7 @@ public class Main extends JFrame {
 					}
 				});
 
-				input_txtpass_hide.setBounds(480, 252, 264, 14);
+				input_txtpass_hide.setBounds(481, 253, 264, 14);
 				MainFrame.add(input_txtpass_hide);
 				input_txtpass_hide.setEchoChar('●');
 				input_txtpass_hide.setFont(new Font("Tahoma", Font.PLAIN, 16));
