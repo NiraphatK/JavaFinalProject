@@ -288,7 +288,7 @@ public class Main extends JFrame {
 						}else lblCautionLogin.setVisible(false);
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Please register first.","DD Rental Car",JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				});

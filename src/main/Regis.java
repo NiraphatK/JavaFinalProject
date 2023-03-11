@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.awt.Color;
@@ -36,8 +37,7 @@ public class Regis extends JFrame {
 	private JPasswordField input_txtpassconfirm_hide;
 	int xx;
 	int xy;
-	Account acc = new Account();
-	Bill bill = new Bill();
+	private Account acc;
 	private JTextField input_fName;
 	private JTextField input_LName;
 
@@ -45,6 +45,7 @@ public class Regis extends JFrame {
 	 * Create the frame.
 	 */
 	public Regis() {
+		 acc = new Account();
 
 		// --------------------------------------FRAME--------------------------------------//
 
@@ -618,8 +619,7 @@ public class Regis extends JFrame {
 						setVisible(false);
 						nextMain.setVisible(true);
 					}
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} catch (IOException e1) {			
 					e1.printStackTrace();
 				}
 

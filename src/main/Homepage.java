@@ -2,19 +2,14 @@ package main;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollBar;
-import java.awt.event.MouseWheelListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
-import java.awt.event.MouseWheelEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -25,66 +20,64 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
 import java.awt.Toolkit;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-
-import java.awt.CardLayout;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.calendar.JMonthChooser;
-import com.toedter.calendar.JYearChooser;
-import com.toedter.components.JLocaleChooser;
-import com.toedter.calendar.JCalendar;
-import com.toedter.components.JSpinField;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.JCheckBox;
-import javax.swing.JTextPane;
 import javax.swing.JTextField;
-import javax.swing.JSeparator;
-import java.awt.BorderLayout;
-import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
 
 public class Homepage extends JFrame {
 
-	private  String[] announce;
-	private  String[] typeCar;
-	private int[] priceCar = { 1000, 1500, 3500, 5000, 2000, 3000 };
-	private JPanel contentPane;
-	private String email;
+	private int babySeat;
+	private int insurance;
+	private int gps;
+	private String[] announce;
+	private String[] typeCar;
+	private int[] priceCar;
 	private int DAYS;
+	int second, i, xx, xy, indexCP;
 	Date CurrentDate = new Date();
 	SimpleDateFormat datefor;
 	Timer timer;
-	int second, i, xx, xy, indexCP, chkT;
 	JLabel dateLabel;
 	Boolean chkCarSelect = false;
-	int chkCar = 0;
 	JLabel showCar;
 
-	private Account acc = new Account();
-
-	public Homepage(String email) {
-		this.email = email;
-		announce = new String[]{"สำหรับลูกค้าใหม่หรือยังไม่เคยใช้บริการของ DD Rental Car เมื่อได้ทำการเช่ารถ ตอนชำระเงินจะได้รับส่วนลด 10% ไปเลย !!!",
+	public Homepage(String email) throws IOException {
+		babySeat = 1999;
+		insurance = 3999;
+		gps = 599;
+		announce = new String[] {
+				"สำหรับลูกค้าใหม่หรือยังไม่เคยใช้บริการของ DD Rental Car เมื่อได้ทำการเช่ารถ ตอนชำระเงินจะได้รับส่วนลด 10% ไปเลย !!!",
 				"สามารถติดตามข่าวสารของพวกเราได้ที่ www.dd-rentalcar.com อย่าพลาดข่าวสารดีๆจากพวกเรา",
 				"บริการเช่ารถของเรามีให้เลือกเช่ามากมายไม่ว่าจะเป็นรุ่น Toyota Honda Susuki Nissan BNW Mercedes-Benz และรุ่นอื่นๆอีกมากมาย",
 				"รถที่มีรูปดาว เป็นรถที่มีความเป็นที่นิยมของตลาดมากหากท่านไม่รู้จะเลือกเช่ารถคันไหนทางบริษัทเราขอแนะนำคันที่มีดาวเพื่อช่วยในการตัดสินใจ" };
-		typeCar = new String[]{ "Toyota Corolla Altis", "Honda Civic", "Mercedes Benz C200", "Nissan GT-R35",
-				"BMW 5 series Sedan", "Tesla Model 3", };
+
+		BufferedReader br = new BufferedReader(new FileReader("carinfo.txt"));
+		String temp = null;
+		i = 0;
+		while((temp = br.readLine())!=null) {
+			i++;
+		}
+		br.close();
+		typeCar = new String[i];
+		priceCar = new int [i];
+		i=0;
+		
+		BufferedReader carInfo = new BufferedReader(new FileReader("carinfo.txt"));
+		while ((temp = carInfo.readLine()) != null) {
+			String[] data = temp.split(",");
+			typeCar[i] = data[0];
+			priceCar[i] = Integer.parseInt(data[1]);
+			i++;
+		}
+		carInfo.close();
 		DecimalFormat fm = new DecimalFormat("#,###");
 
 		getContentPane().setBackground(new Color(249, 251, 252));
@@ -272,29 +265,29 @@ public class Homepage extends JFrame {
 				if (currentDate.isAfter(dateCPick)) {
 					JOptionPane.showMessageDialog(null, "Can not choose pick up day after current day.");
 				}
-				if (!showCar.getText().equals("") && DAYS > 0 && !PlacePR.getText().equals("")&&!currentDate.isAfter(dateCPick)) {
-					int baby = 0, insur = 0, gps = 0;
+				if (!showCar.getText().equals("") && DAYS > 0 && !PlacePR.getText().equals("")
+						&& !currentDate.isAfter(dateCPick)) {
 					if (babyseat.isSelected())
-						total += 1999;
+						total += babySeat;
 					if (carInsur.isSelected())
-						total += 3999;
+						total += insurance;
 					if (GPSselect.isSelected())
-						total += 599;
+						total += gps;
 					totalMoney.setText("" + DAYS + " วัน ราคาสุทธิ " + fm.format(total) + ".00.-");
 
-					chkT = JOptionPane.showConfirmDialog(null,
+					int chkT = JOptionPane.showConfirmDialog(null,
 							"Please press \"YES\" for confirm or \"NO\" to go back page.", "Confirm Payment",
 							JOptionPane.YES_NO_OPTION);
 					if (chkT == 0) {
-						if (babyseat.isSelected())
-							baby = 1999;
-						if (carInsur.isSelected())
-							insur = 3999;
-						if (GPSselect.isSelected())
-							gps = 599;
+						if (!babyseat.isSelected())
+							babySeat= 0;
+						if (!carInsur.isSelected())
+							insurance = 0;
+						if (!GPSselect.isSelected())
+							gps = 0;
 						try {
 							Bill bill = new Bill(email, new Car(typeCar[indexCP], priceCar[indexCP]), PlacePR.getText(),
-									DAYS, insur, baby, gps);
+									DAYS, insurance, babySeat, gps);
 							Billpayment billpay = new Billpayment(bill);
 							bill.saveBill();
 							billpay.setVisible(true);
@@ -390,6 +383,10 @@ public class Homepage extends JFrame {
 		icon_mini.setForeground(Color.DARK_GRAY);
 		icon_mini.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		icon_mini.setBackground(Color.WHITE);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
+		tglbtnNewToggleButton.setBounds(10, 5, 121, 23);
+		panel.add(tglbtnNewToggleButton);
 
 		JPanel CarPanel = new JPanel();
 		CarPanel.setBackground(new Color(255, 255, 255));
@@ -499,7 +496,7 @@ public class Homepage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (radio4.isSelected()) {
 					indexCP = 3;
-					showCar.setText(typeCar[3] + " | Price : " + fm.format(priceCar[3]) + ".-");
+					showCar.setText(typeCar[indexCP] + " | Price : " + fm.format(priceCar[indexCP]) + ".-");
 				}
 			}
 		});

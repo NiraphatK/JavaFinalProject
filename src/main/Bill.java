@@ -15,6 +15,7 @@ public class Bill extends Account {
 	private int insurance;
 	private int childSeat;
 	private int gps;
+	private float discount;
 
 	// method //
 	public Bill() {
@@ -50,7 +51,7 @@ public class Bill extends Account {
 				return false;
 			}
 		}
-		bw.write(email);
+		bw.write(email+"\n");
 		bw.close();br.close();
 		return true;
 	}
@@ -59,8 +60,12 @@ public class Bill extends Account {
 		return startReturnPoint;
 	}
 
+	public void setCouponPrice() throws IOException {
+		discount =  getCoupon(super.getEmail()) ? (getTotalPrice() + getPriceAddon()) * 0.1f : 0f;
+	}
+	
 	public float getCouponPrice() throws IOException {
-		return getCoupon(super.getEmail()) ? (getTotalPrice() + getPriceAddon()) * 0.1f : 0f;
+		return discount;
 	}
 
 	public float getTotalPrice() {
@@ -72,7 +77,7 @@ public class Bill extends Account {
 	}
 
 	public float getNetPrice() throws IOException {
-		return getTotalPrice() + getPriceAddon() - getCouponPrice();
+		return getTotalAddon() - discount;
 	}
 
 	public float getTotalAddon() {
@@ -103,8 +108,8 @@ public class Bill extends Account {
 		BufferedWriter bw = new BufferedWriter((new FileWriter("billpayment.txt", true)));
 		bw.write(super.getFName() + "," + super.getLName() + "," + super.getId() + "," + super.getDriverLicense() + ","
 				+ super.getEmail() + "," + startReturnPoint + "," + day + "," + car.getType() + "," + ","
-				+ car.getPrice() + "," + insurance + "," + childSeat + "," + gps + "," + getCouponPrice() + ","
-				+ getNetPrice());
+				+ car.getPrice() + "," + insurance + "," + childSeat + "," + gps + "," + discount + ","
+				+ getNetPrice()+"\n");
 		bw.close();
 
 	}

@@ -26,12 +26,10 @@ public class Billpayment extends JFrame {
 	private int xx, xy;
 
 	private JPanel contentPane;
-	private Bill bill;
 	private int second;
 	Timer timer;
 
 	public Billpayment(Bill bill) throws IOException {
-		this.bill = bill;
 		DecimalFormat fm = new DecimalFormat("#,##0.00");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -243,12 +241,13 @@ public class Billpayment extends JFrame {
 		showGPS.setBounds(300, 453, 134, 28);
 		contentPane.add(showGPS);
 
+		bill.setCouponPrice();
 		JLabel showDiscount = new JLabel(fm.format(bill.getCouponPrice()) + " Baht.");
 		showDiscount.setFont(new Font("BIZ UDPMincho Medium", Font.PLAIN, 14));
 		showDiscount.setBounds(126, 627, 225, 28);
 		contentPane.add(showDiscount);
 
-		JLabel showNetprice = new JLabel("" + fm.format(bill.getNetPrice()) + " Baht.");
+		JLabel showNetprice = new JLabel(fm.format(bill.getNetPrice()) + " Baht.");
 		showNetprice.setFont(new Font("BIZ UDPMincho Medium", Font.PLAIN, 18));
 		showNetprice.setBounds(163, 687, 212, 28);
 		contentPane.add(showNetprice);

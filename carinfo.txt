@@ -1,0 +1,6 @@
+Toyota Corolla Altis,1000
+Honda Civic,1500
+Mercedes Benz C200,3500
+Nissan GT-R35,5000
+BMW 5 series Sedan,2000
+Tesla Model 3,3000
