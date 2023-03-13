@@ -45,295 +45,296 @@ public class Regis extends JFrame {
 	 * Create the frame.
 	 */
 	public Regis() {
-		 acc = new Account();
+		acc = new Account();
 
 		// --------------------------------------FRAME--------------------------------------//
 
-				setUndecorated(true);
-				setTitle("DD RentalCar Register");
-				setBounds(100, 100, 1000, 650);
-				setLocationRelativeTo(null);
-				setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/logo.png")));
-				// setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),20,20));
+		setUndecorated(true);
+		setTitle("DD RentalCar Register");
+		setBounds(100, 100, 1000, 650);
+		setLocationRelativeTo(null);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/logo.png")));
+		// setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),20,20));
 
-				contentPane = new JPanel();
-				contentPane.setBackground(new Color(251, 234, 235));
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				setContentPane(contentPane);
-				contentPane.setLayout(null);
-				contentPane.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mousePressed(MouseEvent e) {
-						xx = e.getX();
-						xy = e.getY();
-					}
-				});
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(251, 234, 235));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				xx = e.getX();
+				xy = e.getY();
+			}
+		});
 
-				contentPane.addMouseMotionListener(new MouseMotionAdapter() {
-					@Override
-					public void mouseDragged(MouseEvent arg0) {
-						int x = arg0.getXOnScreen();
-						int y = arg0.getYOnScreen();
-						Regis.this.setLocation(x - xx, y - xy);
-					}
+		contentPane.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				int x = arg0.getXOnScreen();
+				int y = arg0.getYOnScreen();
+				Regis.this.setLocation(x - xx, y - xy);
+			}
 
-				});
+		});
 
-				RoundPanel RegisFrame = new RoundPanel(150, new Color(251, 234, 235));
-				RegisFrame.setOpaque(false);
-				RegisFrame.setBounds(10, 11, 980, 578);
-				setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
-				contentPane.setLayout(null);
-				contentPane.add(RegisFrame);
-				RegisFrame.setLayout(null);
+		RoundPanel RegisFrame = new RoundPanel(150, new Color(251, 234, 235));
+		RegisFrame.setOpaque(false);
+		RegisFrame.setBounds(10, 11, 980, 578);
+		setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+		contentPane.setLayout(null);
+		contentPane.add(RegisFrame);
+		RegisFrame.setLayout(null);
 
-				RoundPanel Board = new RoundPanel(150, new Color(47, 60, 126));
-				Board.setBounds(-2, -3, 270, 583);
-				RegisFrame.add(Board);
-				Board.setLayout(null);
-				Board.setOpaque(false);
+		RoundPanel Board = new RoundPanel(150, new Color(47, 60, 126));
+		Board.setBounds(-2, -3, 270, 583);
+		RegisFrame.add(Board);
+		Board.setLayout(null);
+		Board.setOpaque(false);
 
-				// --------------------------------------LOGO--------------------------------------//
+		// --------------------------------------LOGO--------------------------------------//
 
-				JLabel logo = new JLabel("");
-				logo.setBounds(35, 29, 200, 200);
-				Board.add(logo);
-				logo.setIcon(new ImageIcon(Regis.class.getResource("/icon/logo.png")));
+		JLabel logo = new JLabel("");
+		logo.setBounds(35, 29, 200, 200);
+		Board.add(logo);
+		logo.setIcon(new ImageIcon(Regis.class.getResource("/icon/logo.png")));
 
-				// --------------------------------------Label
-				// Text--------------------------------------//
+		// --------------------------------------Label
+		// Text--------------------------------------//
 
-				RoundPanel Deccorate = new RoundPanel(100, new Color(67, 79, 142));
-				Deccorate.setBounds(10, 284, 250, 280);
-				Board.add(Deccorate);
-				Deccorate.setLayout(null);
-				Deccorate.setOpaque(false);
+		RoundPanel Deccorate = new RoundPanel(100, new Color(67, 79, 142));
+		Deccorate.setBounds(10, 284, 250, 280);
+		Board.add(Deccorate);
+		Deccorate.setLayout(null);
+		Deccorate.setOpaque(false);
 
-				txtDDcar = new JLabel("DD Rental Car");
-				txtDDcar.setBounds(66, 240, 143, 33);
-				Board.add(txtDDcar);
-				txtDDcar.setHorizontalAlignment(SwingConstants.CENTER);
-				txtDDcar.setForeground(new Color(251, 234, 235));
-				txtDDcar.setFont(new Font("Impact", Font.PLAIN, 26));
+		txtDDcar = new JLabel("DD Rental Car");
+		txtDDcar.setBounds(66, 240, 143, 33);
+		Board.add(txtDDcar);
+		txtDDcar.setHorizontalAlignment(SwingConstants.CENTER);
+		txtDDcar.setForeground(new Color(251, 234, 235));
+		txtDDcar.setFont(new Font("Impact", Font.PLAIN, 26));
 
-				JLabel txt_location = new JLabel("<html>1771/1 Pattanakarn Road,<br />Suan Luang,Suan Luang ,<br />Bangkok 10250<br />");
-				txt_location.setFont(new Font("Impact", Font.PLAIN, 15));
-				txt_location.setForeground(new Color(251, 234, 235));
-				txt_location.setBounds(62, 192, 155, 60);
-				Deccorate.add(txt_location);
+		JLabel txt_location = new JLabel(
+				"<html>1771/1 Pattanakarn Road,<br />Suan Luang,Suan Luang ,<br />Bangkok 10250<br />");
+		txt_location.setFont(new Font("Impact", Font.PLAIN, 15));
+		txt_location.setForeground(new Color(251, 234, 235));
+		txt_location.setBounds(62, 192, 155, 60);
+		Deccorate.add(txt_location);
 
-				JLabel txt_numberINFO = new JLabel("Contact Information");
-				txt_numberINFO.setHorizontalAlignment(SwingConstants.CENTER);
-				txt_numberINFO.setForeground(new Color(251, 234, 235));
-				txt_numberINFO.setFont(new Font("UD Digi Kyokasho NP-R", Font.PLAIN, 14));
-				txt_numberINFO.setBounds(51, 43, 139, 17);
-				Deccorate.add(txt_numberINFO);
+		JLabel txt_numberINFO = new JLabel("Contact Information");
+		txt_numberINFO.setHorizontalAlignment(SwingConstants.CENTER);
+		txt_numberINFO.setForeground(new Color(251, 234, 235));
+		txt_numberINFO.setFont(new Font("UD Digi Kyokasho NP-R", Font.PLAIN, 14));
+		txt_numberINFO.setBounds(51, 43, 139, 17);
+		Deccorate.add(txt_numberINFO);
 
-				JLabel txt_number = new JLabel("Tel.012-345-6789");
-				txt_number.setBounds(62, 100, 106, 18);
-				Deccorate.add(txt_number);
-				txt_number.setHorizontalAlignment(SwingConstants.CENTER);
-				txt_number.setForeground(new Color(251, 234, 235));
-				txt_number.setFont(new Font("Impact", Font.PLAIN, 14));
+		JLabel txt_number = new JLabel("Tel.012-345-6789");
+		txt_number.setBounds(62, 100, 106, 18);
+		Deccorate.add(txt_number);
+		txt_number.setHorizontalAlignment(SwingConstants.CENTER);
+		txt_number.setForeground(new Color(251, 234, 235));
+		txt_number.setFont(new Font("Impact", Font.PLAIN, 14));
 
-				JLabel txt_numberWWW = new JLabel("www.dd-rentalcar.com");
-				txt_numberWWW.setHorizontalAlignment(SwingConstants.CENTER);
-				txt_numberWWW.setForeground(new Color(251, 234, 235));
-				txt_numberWWW.setFont(new Font("Impact", Font.PLAIN, 15));
-				txt_numberWWW.setBounds(66, 147, 144, 20);
-				Deccorate.add(txt_numberWWW);
+		JLabel txt_numberWWW = new JLabel("www.dd-rentalcar.com");
+		txt_numberWWW.setHorizontalAlignment(SwingConstants.CENTER);
+		txt_numberWWW.setForeground(new Color(251, 234, 235));
+		txt_numberWWW.setFont(new Font("Impact", Font.PLAIN, 15));
+		txt_numberWWW.setBounds(66, 147, 144, 20);
+		Deccorate.add(txt_numberWWW);
 
-				JPanel inBoard = new JPanel(); // Panel
-				inBoard.setBounds(213, 3, 62, 578);
-				Board.add(inBoard);
-				inBoard.setBackground(new Color(47, 60, 126));
-				inBoard.setLayout(null);
+		JPanel inBoard = new JPanel(); // Panel
+		inBoard.setBounds(213, 3, 62, 578);
+		Board.add(inBoard);
+		inBoard.setBackground(new Color(47, 60, 126));
+		inBoard.setLayout(null);
 
-				// --------------------------------------Label
-				// Icon--------------------------------------//
+		// --------------------------------------Label
+		// Icon--------------------------------------//
 
-				JLabel icon_call = new JLabel("");
-				icon_call.setBounds(33, 100, 24, 24);
-				Deccorate.add(icon_call);
-				icon_call.setIcon(new ImageIcon(Regis.class.getResource("/icon/phone_24px.png")));
+		JLabel icon_call = new JLabel("");
+		icon_call.setBounds(33, 100, 24, 24);
+		Deccorate.add(icon_call);
+		icon_call.setIcon(new ImageIcon(Regis.class.getResource("/icon/phone_24px.png")));
 
-				JLabel icon_www = new JLabel("");
-				icon_www.setIcon(new ImageIcon(Regis.class.getResource("/icon/website_21px.png")));
-				icon_www.setBounds(35, 145, 24, 24);
-				Deccorate.add(icon_www);
+		JLabel icon_www = new JLabel("");
+		icon_www.setIcon(new ImageIcon(Regis.class.getResource("/icon/website_21px.png")));
+		icon_www.setBounds(35, 145, 24, 24);
+		Deccorate.add(icon_www);
 
-				JLabel icon_location = new JLabel("");
-				icon_location.setIcon(new ImageIcon(Main.class.getResource("/icon/location_22px.png")));
-				icon_location.setBounds(35, 192, 22, 22);
-				Deccorate.add(icon_location);
+		JLabel icon_location = new JLabel("");
+		icon_location.setIcon(new ImageIcon(Main.class.getResource("/icon/location_22px.png")));
+		icon_location.setBounds(35, 192, 22, 22);
+		Deccorate.add(icon_location);
 
-				JLabel icon_exit = new JLabel("");
-				icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close_16px.png")));
-				icon_exit.setBounds(924, 45, 16, 17);
-				RegisFrame.add(icon_exit);
-				icon_exit.setHorizontalAlignment(SwingConstants.CENTER);
-				icon_exit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				icon_exit.setForeground(Color.DARK_GRAY);
-				icon_exit.setFont(new Font("Tahoma", Font.PLAIN, 16));
-				icon_exit.setBackground(Color.WHITE);
+		JLabel icon_exit = new JLabel("");
+		icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close_16px.png")));
+		icon_exit.setBounds(924, 45, 16, 17);
+		RegisFrame.add(icon_exit);
+		icon_exit.setHorizontalAlignment(SwingConstants.CENTER);
+		icon_exit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		icon_exit.setForeground(Color.DARK_GRAY);
+		icon_exit.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		icon_exit.setBackground(Color.WHITE);
 
-				JLabel icon_mini = new JLabel("");
+		JLabel icon_mini = new JLabel("");
+		icon_mini.setIcon(new ImageIcon(Regis.class.getResource("/icon/subtract_16px.png")));
+		icon_mini.setBounds(926, 73, 14, 17);
+		RegisFrame.add(icon_mini);
+		icon_mini.setHorizontalAlignment(SwingConstants.CENTER);
+		icon_mini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		icon_mini.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setState(Regis.ICONIFIED);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				icon_mini.setIcon(new ImageIcon(Regis.class.getResource("/icon/subtract2_16px.png")));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
 				icon_mini.setIcon(new ImageIcon(Regis.class.getResource("/icon/subtract_16px.png")));
-				icon_mini.setBounds(926, 73, 14, 17);
-				RegisFrame.add(icon_mini);
-				icon_mini.setHorizontalAlignment(SwingConstants.CENTER);
-				icon_mini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				icon_mini.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						setState(Regis.ICONIFIED);
-					}
+			}
+		});
+		icon_mini.setForeground(Color.DARK_GRAY);
+		icon_mini.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		icon_mini.setBackground(Color.WHITE);
 
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						icon_mini.setIcon(new ImageIcon(Regis.class.getResource("/icon/subtract2_16px.png")));
-					}
+		JLabel icon_fName = new JLabel("");
+		icon_fName.setBounds(944, 303, 16, 16);
+		RegisFrame.add(icon_fName);
+		icon_fName.setIcon(new ImageIcon(Regis.class.getResource("/icon/user_16px.png")));
 
-					@Override
-					public void mouseExited(MouseEvent e) {
-						icon_mini.setIcon(new ImageIcon(Regis.class.getResource("/icon/subtract_16px.png")));
-					}
-				});
-				icon_mini.setForeground(Color.DARK_GRAY);
-				icon_mini.setFont(new Font("Tahoma", Font.PLAIN, 25));
-				icon_mini.setBackground(Color.WHITE);
+		JLabel icon_showconfirm = new JLabel("");
+		JLabel icon_show = new JLabel("");
+		JLabel icon_hideconfirm = new JLabel("");
+		JLabel icon_hide = new JLabel("");
+		icon_hide.setBounds(592, 205, 16, 16);
+		icon_hideconfirm.setBounds(592, 303, 16, 16);
+		RegisFrame.add(icon_hide);
+		RegisFrame.add(icon_hideconfirm);
+		icon_hide.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		icon_hideconfirm.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		icon_hide.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				input_txtpass_hide.setEchoChar((char) 0);
+				icon_hide.setVisible(false);
+				icon_hide.setEnabled(false);
+				icon_show.setEnabled(true);
 
-				JLabel icon_fName = new JLabel("");
-				icon_fName.setBounds(944, 303, 16, 16);
-				RegisFrame.add(icon_fName);
-				icon_fName.setIcon(new ImageIcon(Regis.class.getResource("/icon/user_16px.png")));
+			}
+		});
 
-				JLabel icon_showconfirm = new JLabel("");
-				JLabel icon_show = new JLabel("");
-				JLabel icon_hideconfirm = new JLabel("");
-				JLabel icon_hide = new JLabel("");
-				icon_hide.setBounds(592, 205, 16, 16);
-				icon_hideconfirm.setBounds(592, 303, 16, 16);
-				RegisFrame.add(icon_hide);
-				RegisFrame.add(icon_hideconfirm);
-				icon_hide.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				icon_hideconfirm.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				icon_hide.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						input_txtpass_hide.setEchoChar((char) 0);
-						icon_hide.setVisible(false);
-						icon_hide.setEnabled(false);
-						icon_show.setEnabled(true);
+		icon_hide.setIcon(new ImageIcon(Regis.class.getResource("/icon/hide_16px.png")));
+		icon_show.setBounds(592, 205, 16, 16);
+		RegisFrame.add(icon_show);
+		icon_show.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		icon_show.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				input_txtpass_hide.setEchoChar('●');
+				icon_hide.setVisible(true);
+				icon_hide.setEnabled(true);
+				icon_show.setEnabled(false);
 
-					}
-				});
+			}
+		});
+		icon_hideconfirm.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				input_txtpassconfirm_hide.setEchoChar((char) 0);
+				icon_hideconfirm.setVisible(false);
+				icon_hideconfirm.setEnabled(false);
+				icon_showconfirm.setEnabled(true);
 
-				icon_hide.setIcon(new ImageIcon(Regis.class.getResource("/icon/hide_16px.png")));
-				icon_show.setBounds(592, 205, 16, 16);
-				RegisFrame.add(icon_show);
-				icon_show.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				icon_show.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						input_txtpass_hide.setEchoChar('●');
-						icon_hide.setVisible(true);
-						icon_hide.setEnabled(true);
-						icon_show.setEnabled(false);
+			}
+		});
 
-					}
-				});
-				icon_hideconfirm.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						input_txtpassconfirm_hide.setEchoChar((char) 0);
-						icon_hideconfirm.setVisible(false);
-						icon_hideconfirm.setEnabled(false);
-						icon_showconfirm.setEnabled(true);
+		icon_hideconfirm.setIcon(new ImageIcon(Regis.class.getResource("/icon/hide_16px.png")));
+		icon_showconfirm.setBounds(592, 303, 16, 16);
+		RegisFrame.add(icon_showconfirm);
+		icon_showconfirm.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		icon_showconfirm.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				input_txtpassconfirm_hide.setEchoChar('●');
+				icon_hideconfirm.setVisible(true);
+				icon_hideconfirm.setEnabled(true);
+				icon_showconfirm.setEnabled(false);
 
-					}
-				});
+			}
+		});
+		icon_show.setIcon(new ImageIcon(Regis.class.getResource("/icon/eye_16px.png")));
+		icon_showconfirm.setIcon(new ImageIcon(Regis.class.getResource("/icon/eye_16px.png")));
 
-				icon_hideconfirm.setIcon(new ImageIcon(Regis.class.getResource("/icon/hide_16px.png")));
-				icon_showconfirm.setBounds(592, 303, 16, 16);
-				RegisFrame.add(icon_showconfirm);
-				icon_showconfirm.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				icon_showconfirm.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						input_txtpassconfirm_hide.setEchoChar('●');
-						icon_hideconfirm.setVisible(true);
-						icon_hideconfirm.setEnabled(true);
-						icon_showconfirm.setEnabled(false);
+		JLabel icon_IdCard = new JLabel("");
+		icon_IdCard.setIcon(new ImageIcon(Regis.class.getResource("/icon/driver_license_16px.png")));
+		icon_IdCard.setBounds(592, 518, 16, 16);
+		RegisFrame.add(icon_IdCard);
 
-					}
-				});
-				icon_show.setIcon(new ImageIcon(Regis.class.getResource("/icon/eye_16px.png")));
-				icon_showconfirm.setIcon(new ImageIcon(Regis.class.getResource("/icon/eye_16px.png")));
+		JLabel icon_backtoLogin = new JLabel("");
+		icon_backtoLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Main BacktoRegis = new Main();
+				setVisible(false);
+				BacktoRegis.setVisible(true);
+			}
 
-				JLabel icon_IdCard = new JLabel("");
-				icon_IdCard.setIcon(new ImageIcon(Regis.class.getResource("/icon/driver_license_16px.png")));
-				icon_IdCard.setBounds(592, 518, 16, 16);
-				RegisFrame.add(icon_IdCard);
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				icon_backtoLogin.setIcon(new ImageIcon(Regis.class.getResource("/icon/return2_15px.png")));
+			}
 
-				JLabel icon_backtoLogin = new JLabel("");
-				icon_backtoLogin.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						Main BacktoRegis = new Main();
-						setVisible(false);
-						BacktoRegis.setVisible(true);
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						icon_backtoLogin.setIcon(new ImageIcon(Regis.class.getResource("/icon/return2_15px.png")));
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						icon_backtoLogin.setIcon(new ImageIcon(Regis.class.getResource("/icon/return_15px.png")));
-					}
-				});
+			@Override
+			public void mouseExited(MouseEvent e) {
 				icon_backtoLogin.setIcon(new ImageIcon(Regis.class.getResource("/icon/return_15px.png")));
-				icon_backtoLogin.setBounds(924, 100, 19, 19);
-				icon_backtoLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				RegisFrame.add(icon_backtoLogin);
+			}
+		});
+		icon_backtoLogin.setIcon(new ImageIcon(Regis.class.getResource("/icon/return_15px.png")));
+		icon_backtoLogin.setBounds(924, 100, 19, 19);
+		icon_backtoLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		RegisFrame.add(icon_backtoLogin);
 
-				JLabel icon_IdLicense = new JLabel("");
-				icon_IdLicense.setIcon(new ImageIcon(Regis.class.getResource("/icon/Magnetic Card_16px.png")));
-				icon_IdLicense.setBounds(592, 407, 16, 16);
-				RegisFrame.add(icon_IdLicense);
+		JLabel icon_IdLicense = new JLabel("");
+		icon_IdLicense.setIcon(new ImageIcon(Regis.class.getResource("/icon/Magnetic Card_16px.png")));
+		icon_IdLicense.setBounds(592, 407, 16, 16);
+		RegisFrame.add(icon_IdLicense);
 
-				icon_exit.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						int ans = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the application?",
-								"DD Car Rental", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-						if (ans == 0)
-							dispose();
-					}
+		icon_exit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int ans = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the application?",
+						"DD Car Rental", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (ans == 0)
+					dispose();
+			}
 
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close3_16px.png")));
-					}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close3_16px.png")));
+			}
 
-					@Override
-					public void mouseExited(MouseEvent e) {
-						icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close_16px.png")));
-					}
-				});
+			@Override
+			public void mouseExited(MouseEvent e) {
+				icon_exit.setIcon(new ImageIcon(Regis.class.getResource("/icon/close_16px.png")));
+			}
+		});
 
-				JLabel icon_LName = new JLabel("");
-				icon_LName.setIcon(new ImageIcon(Regis.class.getResource("/icon/user_16px.png")));
-				icon_LName.setBounds(944, 407, 16, 16);
-				RegisFrame.add(icon_LName);
+		JLabel icon_LName = new JLabel("");
+		icon_LName.setIcon(new ImageIcon(Regis.class.getResource("/icon/user_16px.png")));
+		icon_LName.setBounds(944, 407, 16, 16);
+		RegisFrame.add(icon_LName);
 
-				JLabel icon_email = new JLabel("");
-				icon_email.setIcon(new ImageIcon(Regis.class.getResource("/icon/Open email_16px.png")));
-				icon_email.setBounds(592, 105, 16, 16);
-				RegisFrame.add(icon_email);
+		JLabel icon_email = new JLabel("");
+		icon_email.setIcon(new ImageIcon(Regis.class.getResource("/icon/Open email_16px.png")));
+		icon_email.setBounds(592, 105, 16, 16);
+		RegisFrame.add(icon_email);
 		// --------------------------------------INPUT-------------------------------------//
 
 		/*
@@ -380,29 +381,30 @@ public class Regis extends JFrame {
 		txt_email.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_email.setForeground(Color.BLACK);
 		txt_email.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		
+		JLabel txt_email_placeholder = new JLabel("กรอกอีเมล");
+		txt_email_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+		txt_email_placeholder.setForeground(Color.GRAY);
+		txt_email_placeholder.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txt_email_placeholder.setBounds(320, 100, 90, 20);
+		RegisFrame.add(txt_email_placeholder);
 
-		input_txtemail = new JTextField("กรอกอีเมล");
+		input_txtemail = new JTextField();
 		input_txtemail.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				input_txtemail.setForeground(Color.BLACK);
+				txt_email_placeholder.setVisible(false);
 			}
 		});
-		input_txtemail.setForeground(Color.GRAY);
 		input_txtemail.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (input_txtemail.getText().equals("กรอกอีเมล")) {
-					input_txtemail.setText("");
-				}
+					txt_email_placeholder.setText("");
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				if (input_txtemail.getText().equals("")) {
-					input_txtemail.setText("กรอกอีเมล");
-					input_txtemail.setForeground(Color.GRAY);
-				}
+				txt_email_placeholder.setText("กรอกอีเมล");
 			}
 		});
 		input_txtemail.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -425,7 +427,19 @@ public class Regis extends JFrame {
 				txt_pass_placeholder.setVisible(false);
 			}
 		});
-		input_txtpass_hide.setBounds(320, 202, 259, 14);
+		input_txtpass_hide.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_pass_placeholder.setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				txt_pass_placeholder.setText("กรอกรหัสผ่าน");
+			}
+		});
+
+		input_txtpass_hide.setBounds(320, 196, 259, 20);
 		RegisFrame.add(input_txtpass_hide);
 		input_txtpass_hide.setEchoChar('●');
 		input_txtpass_hide.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -446,14 +460,24 @@ public class Regis extends JFrame {
 		pass.setForeground(Color.BLACK);
 		pass.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
-		input_txtpassconfirm_hide = new JPasswordField();
+		input_txtpassconfirm_hide = new JPasswordField();		
 		input_txtpassconfirm_hide.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				txt_confirmpass_placeholder.setVisible(false);
 			}
 		});
-		input_txtpassconfirm_hide.setBounds(320, 302, 259, 14);
+		input_txtpassconfirm_hide.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_confirmpass_placeholder.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				txt_confirmpass_placeholder.setText("กรอกรหัสผ่านอีกครั้ง");
+			}
+		});
+		input_txtpassconfirm_hide.setBounds(320, 296, 259, 20);
 
 		RegisFrame.add(input_txtpassconfirm_hide);
 		input_txtpassconfirm_hide.setEchoChar('●');
@@ -488,11 +512,22 @@ public class Regis extends JFrame {
 				txt_IDcard_placeholder.setVisible(false);
 			}
 		});
+		input_TextIdCard.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_IDcard_placeholder.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				txt_IDcard_placeholder.setText("กรอกเลขบัตรประชาชน");
+			}
+		});
+		
 		input_TextIdCard.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		input_TextIdCard.setColumns(10);
 		input_TextIdCard.setBorder(null);
 		input_TextIdCard.setBackground(new Color(0, 0, 0, 1));
-		input_TextIdCard.setBounds(320, 406, 259, 14);
+		input_TextIdCard.setBounds(320, 400, 259, 20);
 		RegisFrame.add(input_TextIdCard);
 
 		JLabel txt_idcard_underline = new JLabel("____________________________________________");
@@ -514,11 +549,22 @@ public class Regis extends JFrame {
 				txt_driverLicense_placeholder.setVisible(false);
 			}
 		});
+		input_TextDriverID.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_driverLicense_placeholder.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				txt_driverLicense_placeholder.setText("กรอกเลขใบขับขี่");
+			}
+		});
+		
 		input_TextDriverID.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		input_TextDriverID.setColumns(10);
 		input_TextDriverID.setBorder(null);
 		input_TextDriverID.setBackground(new Color(0, 0, 0, 1));
-		input_TextDriverID.setBounds(320, 517, 259, 14);
+		input_TextDriverID.setBounds(320, 511, 259, 20);
 		RegisFrame.add(input_TextDriverID);
 
 		JLabel txt_idLicense_underline = new JLabel("____________________________________________");
@@ -533,8 +579,8 @@ public class Regis extends JFrame {
 		lblCautionEmail.setVisible(false);
 		RegisFrame.add(lblCautionEmail);
 
-		JLabel lblCautionPassword = new JLabel("* รหัสผ่านสั้นเกินไป");
-		lblCautionPassword.setBounds(412, 156, 131, 17);
+		JLabel lblCautionPassword = new JLabel("* รหัสผ่านอย่างน้อย 8 ตัว");
+		lblCautionPassword.setBounds(412, 156, 137, 16);
 		lblCautionPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblCautionPassword.setForeground(Color.red);
 		lblCautionPassword.setVisible(false);
@@ -619,7 +665,7 @@ public class Regis extends JFrame {
 						setVisible(false);
 						nextMain.setVisible(true);
 					}
-				} catch (IOException e1) {			
+				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 
@@ -655,11 +701,22 @@ public class Regis extends JFrame {
 				txt_fName_placeholder.setVisible(false);
 			}
 		});
+		input_fName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_fName_placeholder.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				txt_fName_placeholder.setText("กรอกชื่อจริง");
+			}
+		});
+		
 		input_fName.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		input_fName.setColumns(10);
 		input_fName.setBorder(null);
 		input_fName.setBackground(new Color(0, 0, 0, 1));
-		input_fName.setBounds(674, 298, 259, 19);
+		input_fName.setBounds(674, 293, 259, 24);
 		RegisFrame.add(input_fName);
 		JLabel txt_LName_placeholder = new JLabel("กรอกนามสกุล");
 		input_LName = new JTextField();
@@ -669,11 +726,22 @@ public class Regis extends JFrame {
 				txt_LName_placeholder.setVisible(false);
 			}
 		});
+		input_LName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_LName_placeholder.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				txt_LName_placeholder.setText("กรอกนามสกุล");
+			}
+		});
+			
 		input_LName.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		input_LName.setColumns(10);
 		input_LName.setBorder(null);
 		input_LName.setBackground(new Color(0, 0, 0, 1));
-		input_LName.setBounds(674, 403, 259, 18);
+		input_LName.setBounds(674, 396, 259, 25);
 		RegisFrame.add(input_LName);
 
 		JLabel txt_LName = new JLabel("Last Name :");
@@ -693,8 +761,8 @@ public class Regis extends JFrame {
 		txt_LName_underline.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txt_LName_underline.setBounds(672, 409, 264, 14);
 		RegisFrame.add(txt_LName_underline);
-
-
+		
+		
 
 		// --------------------------------------Label
 		// BG-------------------------------------//

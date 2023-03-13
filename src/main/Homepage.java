@@ -80,6 +80,7 @@ public class Homepage extends JFrame {
 		carInfo.close();
 		DecimalFormat fm = new DecimalFormat("#,###");
 
+		setTitle("DD RentalCar Homepage");
 		getContentPane().setBackground(new Color(249, 251, 252));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/logo.png")));
@@ -89,6 +90,7 @@ public class Homepage extends JFrame {
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -164,6 +166,7 @@ public class Homepage extends JFrame {
 		car1Text_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		JDateChooser datePick = new JDateChooser();
+		datePick.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		datePick.setMinSelectableDate(CurrentDate);
 		datePick.setBounds(3, 82, 107, 20);
 		datePick.setDateFormatString("d/MMM/yyyy");
@@ -171,6 +174,7 @@ public class Homepage extends JFrame {
 		datePick.setOpaque(false);
 
 		JDateChooser dateReturn = new JDateChooser();
+		dateReturn.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateReturn.setMinSelectableDate(CurrentDate);
 		dateReturn.setBounds(111, 82, 108, 20);
 		dateReturn.setDateFormatString("d/MMM/yyyy");
@@ -196,14 +200,17 @@ public class Homepage extends JFrame {
 		Deccorate.add(car1Text3);
 
 		JCheckBox babyseat = new JCheckBox("Baby seat              ( 1,999.- )");
+		babyseat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		babyseat.setBounds(13, 228, 165, 23);
 		Deccorate.add(babyseat);
 
 		JCheckBox carInsur = new JCheckBox("Car insurance       ( 3,999.- )");
+		carInsur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		carInsur.setBounds(13, 261, 176, 23);
 		Deccorate.add(carInsur);
 
 		JCheckBox GPSselect = new JCheckBox("GPS                        ( 599.- )");
+		GPSselect.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GPSselect.setBounds(13, 295, 165, 23);
 		Deccorate.add(GPSselect);
 
@@ -218,6 +225,7 @@ public class Homepage extends JFrame {
 		Deccorate.add(showCar);
 
 		JLabel bottonDetail = new JLabel("");
+		bottonDetail.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		bottonDetail.setBounds(44, 430, 136, 50);
 		Deccorate.add(bottonDetail);
 		bottonDetail.addMouseListener(new MouseAdapter() {
@@ -301,6 +309,7 @@ public class Homepage extends JFrame {
 		bottonDetail.setIcon(new ImageIcon(Homepage.class.getResource("/button/purchase2.png")));
 
 		JLabel logoutLabel = new JLabel("Log out :");
+		logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logoutLabel.setForeground(new Color(0, 0, 0));
 		logoutLabel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -383,10 +392,6 @@ public class Homepage extends JFrame {
 		icon_mini.setForeground(Color.DARK_GRAY);
 		icon_mini.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		icon_mini.setBackground(Color.WHITE);
-		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
-		tglbtnNewToggleButton.setBounds(10, 5, 121, 23);
-		panel.add(tglbtnNewToggleButton);
 
 		JPanel CarPanel = new JPanel();
 		CarPanel.setBackground(new Color(255, 255, 255));
@@ -419,7 +424,7 @@ public class Homepage extends JFrame {
 				"บริการเช่ารถของเรามีให้เลือกเช่ามากมายไม่ว่าจะเป็นรุ่น Toyota Honda Susuki Nissan BNW Mercedes-Benz และรุ่นอื่นๆอีกมากมาย");
 		TextLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		TextLabel.setForeground(new Color(255, 92, 11));
-		TextLabel.setBounds(117, 0, 969, 30);
+		TextLabel.setBounds(97, 1, 969, 30);
 		Board.add(TextLabel);
 
 		second = 0;
@@ -470,6 +475,7 @@ public class Homepage extends JFrame {
 		car1Panel.add(StarLabel);
 
 		JRadioButton radio1 = new JRadioButton("คลิกเพื่อเลือกเช่า");
+		radio1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		radio1.setBackground(new Color(237, 240, 245));
 		radio1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		radio1.setBounds(41, 281, 137, 21);
@@ -486,12 +492,14 @@ public class Homepage extends JFrame {
 		car1Panel_1.add(StarLabel_1);
 
 		JRadioButton radio4 = new JRadioButton("คลิกเพื่อเลือกเช่า");
+		radio4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		radio4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		radio4.setBackground(new Color(237, 240, 245));
 		radio4.setBounds(39, 280, 134, 23);
 		car1Panel_1.add(radio4);
 
 		JButton ConfirmBottonc4 = new JButton("Confirm");
+		ConfirmBottonc4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ConfirmBottonc4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radio4.isSelected()) {
@@ -514,12 +522,14 @@ public class Homepage extends JFrame {
 		car3Label.setFont(new Font("Sitka Small", Font.PLAIN, 14));
 
 		JRadioButton radio2 = new JRadioButton("คลิกเพื่อเลือกเช่า");
+		radio2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		radio2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		radio2.setBackground(new Color(237, 240, 245));
 		radio2.setBounds(38, 281, 137, 23);
 		car1Panel_2.add(radio2);
 
 		JButton ConfirmBottonc2 = new JButton("Confirm");
+		ConfirmBottonc2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ConfirmBottonc2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radio2.isSelected()) {
@@ -560,12 +570,14 @@ public class Homepage extends JFrame {
 		car1Panel_4.add(car4Picture);
 
 		JRadioButton radio5 = new JRadioButton("คลิกเพื่อเลือกเช่า");
+		radio5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		radio5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		radio5.setBackground(new Color(237, 240, 245));
 		radio5.setBounds(39, 282, 137, 23);
 		car1Panel_4.add(radio5);
 
 		JButton ConfirmBottonc5 = new JButton("Confirm");
+		ConfirmBottonc5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ConfirmBottonc5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radio5.isSelected()) {
@@ -599,12 +611,14 @@ public class Homepage extends JFrame {
 		car1Panel_3.add(StarLabel_1_1);
 
 		JRadioButton radio3 = new JRadioButton("คลิกเพื่อเลือกเช่า");
+		radio3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		radio3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		radio3.setBackground(new Color(237, 240, 245));
 		radio3.setBounds(40, 280, 137, 23);
 		car1Panel_3.add(radio3);
 
 		JButton ConfirmBottonc3 = new JButton("Confirm");
+		ConfirmBottonc3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ConfirmBottonc3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radio3.isSelected()) {
@@ -633,12 +647,14 @@ public class Homepage extends JFrame {
 		car1Panel_5.add(car6Picture);
 
 		JRadioButton radio6 = new JRadioButton("คลิกเพื่อเลือกเช่า");
+		radio6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		radio6.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		radio6.setBackground(new Color(237, 240, 245));
 		radio6.setBounds(41, 282, 137, 23);
 		car1Panel_5.add(radio6);
 
 		JButton ConfirmBottonc6 = new JButton("Confirm");
+		ConfirmBottonc6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ConfirmBottonc6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radio6.isSelected()) {
@@ -659,6 +675,7 @@ public class Homepage extends JFrame {
 		bp.add(radio1);
 
 		JButton ConfirmBottonc1 = new JButton("Confirm");
+		ConfirmBottonc1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ConfirmBottonc1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radio1.isSelected()) {

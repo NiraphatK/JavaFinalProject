@@ -32,6 +32,7 @@ public class Billpayment extends JFrame {
 	public Billpayment(Bill bill) throws IOException {
 		DecimalFormat fm = new DecimalFormat("#,##0.00");
 
+		setTitle("DD RentalCar Invoice");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/logo.png")));
 		setBounds(10, 11, 500, 750);

@@ -19,6 +19,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Main extends JFrame {
 
@@ -315,8 +317,31 @@ public class Main extends JFrame {
 				MainFrame.add(txt_email_underline);
 				txt_email_underline.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 				txt_email_underline.setFont(new Font("Tahoma", Font.PLAIN, 11));
-
+				
+				JLabel txt_email_placeholder = new JLabel("กรอกอีเมล");
+				txt_email_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+				txt_email_placeholder.setForeground(Color.GRAY);
+				txt_email_placeholder.setFont(new Font("Tahoma", Font.PLAIN, 16));
+				txt_email_placeholder.setBounds(481, 132, 70, 20);
+				MainFrame.add(txt_email_placeholder);
+				
 				input_txtemail = new JTextField();
+				input_txtemail.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyTyped(KeyEvent e) {
+						txt_email_placeholder.setVisible(false);
+					}
+				});
+				input_txtemail.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						txt_email_placeholder.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						txt_email_placeholder.setText("กรอกอีเมล");
+					}
+				});
 				input_txtemail.setBounds(481, 131, 259, 20);
 				MainFrame.add(input_txtemail);
 				input_txtemail.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -324,34 +349,34 @@ public class Main extends JFrame {
 				input_txtemail.setBackground(new java.awt.Color(0, 0, 0, 1));
 				input_txtemail.setColumns(10);
 
-				JLabel txt_email_placeholder = new JLabel("กรอกอีเมล");
-				txt_email_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-				input_txtemail.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyTyped(KeyEvent e) {
-						txt_email_placeholder.setVisible(false);
-					}
-				});
-				txt_email_placeholder.setForeground(Color.GRAY);
-				txt_email_placeholder.setFont(input_txtemail.getFont());
-				txt_email_placeholder.setBounds(481, 132, 70, 20);
-				MainFrame.add(txt_email_placeholder);
-
-				input_txtpass_hide = new JPasswordField();
 				JLabel txt_pass_placeholder = new JLabel("กรอกรหัสผ่าน");
 				txt_pass_placeholder.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 				txt_pass_placeholder.setForeground(Color.GRAY);
 				txt_pass_placeholder.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				txt_pass_placeholder.setBounds(481, 248, 90, 20);
 				MainFrame.add(txt_pass_placeholder);
+				
+				input_txtpass_hide = new JPasswordField();
 				input_txtpass_hide.addKeyListener(new KeyAdapter() {
 					@Override
 					public void keyTyped(KeyEvent e) {
 						txt_pass_placeholder.setVisible(false);
 					}
 				});
+				input_txtpass_hide.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						txt_pass_placeholder.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						txt_pass_placeholder.setText("กรอกรหัสผ่าน");
+					}
+				});
+				
+				
 
-				input_txtpass_hide.setBounds(481, 253, 264, 14);
+				input_txtpass_hide.setBounds(483, 245, 264, 21);
 				MainFrame.add(input_txtpass_hide);
 				input_txtpass_hide.setEchoChar('●');
 				input_txtpass_hide.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -379,6 +404,11 @@ public class Main extends JFrame {
 				txt_pass.setHorizontalAlignment(SwingConstants.CENTER);
 				txt_pass.setForeground(Color.BLACK);
 				txt_pass.setFont(new Font("Tahoma", Font.PLAIN, 18));
+				
+				JLabel txt_ver = new JLabel("V1.0.0");
+				txt_ver.setForeground(Color.GRAY);
+				txt_ver.setBounds(846, 553, 46, 14);
+				MainFrame.add(txt_ver);
 
 			}
 		}

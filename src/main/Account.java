@@ -110,7 +110,7 @@ public class Account {
 				|| !(EMAIL.endsWith("@hotmail.com")) && !(EMAIL.endsWith("@gmail.com")))
 			return "email";
 
-		if (PASS1.length() < 6 || PASS2.length() < 6) {
+		if (PASS1.length() < 8 ) {
 			return "shortPassword";
 		}
 
