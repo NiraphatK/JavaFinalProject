@@ -1,0 +1,20 @@
+
+
+Version:	3.50
+CmdLine:	D:\Project\Project_Java\JavaFinalProject\DD Rental Car.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	D:\Project\Project_Java\JavaFinalProject\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\
+Substitute:	PATH = C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\bin;C:\app\nirap\product\18.0.0\dbhomeXE\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\nirap\AppData\Local\Microsoft\WindowsApps;E:\Microsoft VS Code\bin;C:\Users\nirap\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\nirap\AppData\Roaming\npm;C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\\bin
+JRE paths:	C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\bin;C:\app\nirap\product\18.0.0\dbhomeXE\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\nirap\AppData\Local\Microsoft\WindowsApps;E:\Microsoft VS Code\bin;C:\Users\nirap\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\nirap\AppData\Roaming\npm;C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\\bin
+Check launcher:	C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\bin\javaw.exe (OK)
+Version string: 1.021.000 / 64-Bit (OK)
+Launcher:	C:\Program Files\Microsoft\jdk-21.0.0.35-hotspot\bin\javaw.exe
+Launcher args:	-jar "D:\Project\Project_Java\JavaFinalProject\DD Rental Car.exe"
+Args length:	65/32768 chars
+Exit code:	0

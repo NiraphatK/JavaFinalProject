@@ -403,7 +403,7 @@ public class Homepage extends JFrame {
 		CarPanel.add(scrollBar);
 
 		JLabel megaphoneLabel = new JLabel("");
-		megaphoneLabel.setIcon(new ImageIcon(Homepage.class.getResource("/icon/Megaph.png")));
+		megaphoneLabel.setIcon(new ImageIcon(Homepage.class.getResource("/icon/MegaPh.png")));
 		megaphoneLabel.setBounds(67, 23, 30, 30);
 		CarPanel.add(megaphoneLabel);
 
